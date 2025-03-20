@@ -1,4 +1,4 @@
-const { addTask, removeTask, toggleTaskCompletion } = require( "../src/js/app" );
+const { addTask, removeTask, toggleTaskCompletion } = require( "../src/js/taskManager" );
 
 describe( "Task Management", () => 
 {
