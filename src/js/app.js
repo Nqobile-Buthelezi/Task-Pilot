@@ -8,14 +8,12 @@ function removeTask(tasks, taskIdToRemove)
     return tasks.filter( task => task.id !== taskIdToRemove );
 }
 
-function toggleTaskCompletion(tasks, taskIdToRemove)
-{
-    return tasks.map( task => {
-        if ( task.id === taskIdToRemove ) {
-            return { ...task, completed: !task.completed };
-        }
-        return task;
-    });
-}
+const toggleTaskCompletion = ( tasks, taskIdToUpdate ) => {
+    return tasks.map(task => 
+        task.id === taskIdToUpdate 
+            ? { ...task, completed: !task.completed } 
+            : task
+    );
+};
 
 module.exports = { addTask, removeTask, toggleTaskCompletion };

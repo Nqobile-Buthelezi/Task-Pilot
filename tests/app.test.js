@@ -21,7 +21,7 @@ describe( "Task Management", () => {
         expect( tasks[ 0 ].title ).toBe( "Test Task" );
     });
 
-    test("Should toggle task completion status", () => {
+    test( "Should toggle task completion status.", () => {
         const taskIdToToggle = 1;
         const updatedTasks = toggleTaskCompletion( tasks, taskIdToToggle );
         
@@ -29,7 +29,7 @@ describe( "Task Management", () => {
         expect( updatedTasks[ 0 ].completed ).toBe( true );
     });
 
-    test( "Should remove a task", () => {
+    test( "Should remove a task.", () => {
         const taskIdToRemove = 1;
 
         const updatedTasks = removeTask( tasks, taskIdToRemove );
