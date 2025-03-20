@@ -7,7 +7,7 @@ describe( "Task Management", () =>
     beforeEach( () => 
     {
         tasks = [ { id: 1, title: "Test Task", completed: false } ];
-    })
+    });
 
     test( "Should add a new task.", () => 
     {
