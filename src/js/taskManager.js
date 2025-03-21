@@ -54,7 +54,7 @@ export class TaskManager {
     {
         this.tasks = this.tasks.map( task =>
             task.id === taskIdToUpdate
-                ? { ...task, text: newText }
+                ? { ...task, title: newText }
                 : task
         );
         this.storage.saveTasks( this.tasks );
