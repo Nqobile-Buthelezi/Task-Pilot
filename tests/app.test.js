@@ -1,5 +1,5 @@
-const { TaskManager } = require( "../src/js/taskManager.js" );
-const { Storage } = require( "../src/js/storage.js" );
+import { TaskManager } from "../src/js/taskManager.js";
+import { Storage } from "../src/js/storage.js";
 
 describe( "Task-Pilot: Task Management", () => 
 {

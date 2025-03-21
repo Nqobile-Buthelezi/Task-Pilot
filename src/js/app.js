@@ -8,9 +8,9 @@ class App {
     {
         this.storage = new Storage();
         this.ui = new UI();
-        this.taskManager = new TaskManager( this.storage.getTasks() );
+        this.taskManager = new TaskManager( this.storage );
 
-        this.tasks = this.taskManager.tasks;
+        this.tasks = this.taskManager.getAllTasks();
 
         this.addTaskBtn = document.getElementById( "addTask" );
         this.taskInput = document.getElementById( "taskInput" );
@@ -73,12 +73,12 @@ class App {
 
     handleAddTask()
     {
-        const taskText = this.taskInput.value.trim();
+        const taskTitle = this.taskInput.value.trim();
         
-        if ( taskText )
-            {
-            this.tasks = this.taskManager.addTask( this.tasks, taskText );
-            this.storage.saveTasks( this.tasks );
+        if ( taskTitle )
+        {
+            const task = this.taskManager.createTask( taskTitle );
+            this.tasks = this.taskManager.addTask( task );
             this.ui.clearInput();
             this.loadTasks();
             this.ui.showAlert( "Task added successfully!" );
@@ -88,8 +88,7 @@ class App {
     handleDeleteTask( index ) 
     {
         index = Number( index ); 
-        this.tasks = this.taskManager.removeTask( this.tasks, index );
-        this.storage.saveTasks( this.tasks );
+        this.tasks = this.taskManager.removeTask( index );
         this.loadTasks();
         this.ui.showAlert( "Task deleted successfully!" );
     }
@@ -97,13 +96,12 @@ class App {
     handleEditTask( index ) 
     {
         index = Number( index ); 
-        const newText = prompt( "Edit task:", this.tasks[ index ].title );
+        const newText = prompt( "Edit task:", this.taskManager.getAllTasks()[ index ].title );
         
         if ( newText !== null && newText.trim() !== "" ) 
         {
-            this.tasks = this.taskManager.updateTask( this.tasks, index, newText.trim() );
+            this.tasks = this.taskManager.updateTask( index, newText.trim() );
             
-            this.storage.saveTasks( this.tasks );
             this.loadTasks();
             this.ui.showAlert( "Task updated successfully!" );
         }
@@ -111,7 +109,7 @@ class App {
 
     handleToggleTask( index ) 
     {
-        this.tasks = this.taskManager.toggleTaskCompletion( this.tasks, index );
+        this.tasks = this.taskManager.toggleTaskCompletion( index );
         this.storage.saveTasks( this.tasks );
         this.loadTasks();
     }
@@ -119,6 +117,6 @@ class App {
 
 document.addEventListener( "DOMContentLoaded", () => 
     {
-    const app = new App();
+        const app = new App();
     }
 );

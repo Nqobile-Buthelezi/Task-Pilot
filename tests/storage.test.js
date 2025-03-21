@@ -1,4 +1,4 @@
-const { Storage } = require( "../src/js/storage" );
+import { Storage } from "../src/js/storage";
 
 describe( "Task-Pilot: Storage", () => 
 {

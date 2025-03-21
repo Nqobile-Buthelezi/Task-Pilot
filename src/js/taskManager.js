@@ -1,4 +1,4 @@
-class TaskManager {
+export class TaskManager {
 
     constructor( storage ) 
     {
@@ -11,6 +11,27 @@ class TaskManager {
         this.tasks = this.storage.getTasks();
     }
 
+    createTask( title )
+    {
+        return {
+            id: this.generateUniqueId(),
+            title,
+            completed: false
+        };
+    }
+
+    generateUniqueId() {
+        const existingIds = this.storage.getTasks().map( task => task.id );
+        let newId = 1;
+
+        while ( existingIds.includes( newId ) )
+        {
+            newId++;
+        }
+
+        return newId;
+    }
+
     addTask( newTask ) 
     {
         const isDuplicate = this.tasks.some( task => task.id === newTask.id );
@@ -20,7 +41,7 @@ class TaskManager {
             this.tasks = [ ...this.tasks, newTask ];
             this.storage.saveTasks( this.tasks );
         }
-        
+
         return this.tasks;
     }
 
@@ -60,6 +81,4 @@ class TaskManager {
     }
 
 }
-
-module.exports = { TaskManager };
 

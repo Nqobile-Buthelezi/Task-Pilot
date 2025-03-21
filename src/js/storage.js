@@ -1,4 +1,4 @@
-class Storage {
+export class Storage {
 
     constructor() 
     {
@@ -29,5 +29,3 @@ class Storage {
         }
     }
 }
-
-module.exports = { Storage };
