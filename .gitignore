@@ -6,9 +6,6 @@ package-lock.json
 coverage/
 .jest/
 
-# Babel cache
-.babelrc
-
 # Logs and debug files
 npm-debug.log*
 yarn-debug.log*
