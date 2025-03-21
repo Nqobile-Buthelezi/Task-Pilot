@@ -13,6 +13,7 @@ class App {
         this.tasks = this.taskManager.getAllTasks();
 
         this.addTaskBtn = document.getElementById( "addTask" );
+        this.clearTasksBtn = document.getElementById( "clearTasks" );
         this.taskInput = document.getElementById( "taskInput" );
         this.taskList = document.getElementById( "taskList" );
 
@@ -22,6 +23,11 @@ class App {
 
     initialiseEventListeners() 
     {
+        this.clearTasksBtn.addEventListener(
+            "click", 
+            () => this.handleClearTasks()
+        );
+
         this.addTaskBtn.addEventListener(
             "click", 
             () => this.handleAddTask()
@@ -39,15 +45,15 @@ class App {
             "click", 
             ( e ) => 
             {
-                const index = Number( e.target.dataset.index );
+                const id = Number( e.target.dataset.index );
             
                 if ( e.target.classList.contains( "delete-btn" ) ) 
                 {
-                    this.handleDeleteTask( index );
+                    this.handleDeleteTask( id );
                 } 
                 else if ( e.target.classList.contains( "edit-btn" ) ) 
                 {
-                    this.handleEditTask( index );
+                    this.handleEditTask( id );
                 }
             }
         );
@@ -58,8 +64,8 @@ class App {
             {
                 if ( e.target.type === "checkbox" ) 
                 {
-                    const index = e.target.dataset.index;
-                    this.handleToggleTask( index );
+                    const id = e.target.dataset.id;
+                    this.handleToggleTask( id );
                 }
             }
         );
@@ -67,8 +73,18 @@ class App {
 
     loadTasks()
     {
-        this.tasks = this.storage.getTasks() || [];
+        this.tasks = this.taskManager.getAllTasks() || [];
+        for ( const task of this.tasks ) {
+            //print title of each task
+            console.log( task.title );
+        }
         this.ui.renderTasks( this.tasks );
+    }
+
+    handleClearTasks() {
+        this.tasks = this.taskManager.clearTasks();
+        this.loadTasks();
+        this.ui.showAlert("All tasks cleared!");
     }
 
     handleAddTask()
@@ -85,31 +101,33 @@ class App {
         }
     }
 
-    handleDeleteTask( index ) 
+    handleDeleteTask( taskId ) 
     {
-        index = Number( index ); 
-        this.tasks = this.taskManager.removeTask( index );
+        taskId = Number( taskId ); 
+        this.tasks = this.taskManager.removeTask( taskId );
+
         this.loadTasks();
         this.ui.showAlert( "Task deleted successfully!" );
     }
 
-    handleEditTask( index ) 
+    handleEditTask( taskId ) 
     {
-        index = Number( index ); 
-        const newText = prompt( "Edit task:", this.taskManager.getAllTasks()[ index ].title );
+        taskId = Number( taskId );
+        const newText = prompt( "Edit task:", this.taskManager.getTask( taskId ).title );
         
         if ( newText !== null && newText.trim() !== "" ) 
         {
-            this.tasks = this.taskManager.updateTask( index, newText.trim() );
+            console.log( newText );
+            this.tasks = this.taskManager.updateTask( taskId, newText.trim() );
             
             this.loadTasks();
             this.ui.showAlert( "Task updated successfully!" );
         }
     }
 
-    handleToggleTask( index ) 
+    handleToggleTask( taskId ) 
     {
-        this.tasks = this.taskManager.toggleTaskCompletion( index );
+        this.tasks = this.taskManager.toggleTaskCompletion( taskId );
         this.storage.saveTasks( this.tasks );
         this.loadTasks();
     }

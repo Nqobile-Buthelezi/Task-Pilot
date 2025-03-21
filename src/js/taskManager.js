@@ -45,6 +45,10 @@ export class TaskManager {
         return this.tasks;
     }
 
+    getTask( taskID )
+    {
+        return this.storage.getTasks().find( task => task.id === taskID );
+    }
 
     updateTask( taskIdToUpdate, newText ) 
     {
@@ -78,6 +82,13 @@ export class TaskManager {
     getAllTasks()
     {
         return this.storage.getTasks();
+    }
+
+    clearTasks() 
+    {
+        this.tasks = [];
+        this.storage.saveTasks( this.tasks );
+        return this.tasks;
     }
 
 }

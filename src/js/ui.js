@@ -27,7 +27,7 @@ export class UI {
                 <input type="checkbox" 
                 class="form-check-input me-2" 
                 ${ task.completed ? "checked" : "" } 
-                data-index="${ index }">
+                data-index="${ task.id }">
                 <span class="
                 ${ task.completed ? "text-decoration-line-through" : "" }">
                 ${ task.title }</span>
@@ -37,9 +37,9 @@ export class UI {
             buttons.className = "btn-group";
             buttons.innerHTML = `
                 <button class="btn btn-sm btn-outline-primary 
-                edit-btn" data-index="${ index }">Edit</button>
+                edit-btn" data-index="${ task.id }">Edit</button>
                 <button class="btn btn-sm btn-outline-danger 
-                delete-btn" data-index="${ index }">Delete</button>
+                delete-btn" data-index="${ task.id }">Delete</button>
             `;
 
             li.appendChild( taskText );
