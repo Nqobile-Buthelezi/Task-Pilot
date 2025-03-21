@@ -7,14 +7,15 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Nqobile-Buthelezi/task-pilot.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nqobile Buthelezi",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Nqobile-Buthelezi/task-pilot/issues"

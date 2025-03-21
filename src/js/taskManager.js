@@ -1,39 +1,65 @@
-export class TaskManager {
+class TaskManager {
 
-    constructor( tasks ) 
+    constructor( storage ) 
     {
-        this.tasks = tasks;
-     }
-
-    addTask(tasks, newTask) 
-    {
-        const isDuplicate = tasks.some(task => task.id === newTask.id);
-
-        return !isDuplicate ? [...tasks, newTask] : tasks;
+        if ( !storage )
+        {
+            throw new Error( "Storage is required for task manager." );
+        }
+        
+        this.storage = storage;
+        this.tasks = this.storage.getTasks();
     }
 
-    updateTask( tasks, taskIdToUpdate, newText ) 
+    addTask( newTask ) 
     {
-        return tasks.map(task =>
+        const isDuplicate = this.tasks.some( task => task.id === newTask.id );
+
+        if ( !isDuplicate )
+        {
+            this.tasks = [ ...this.tasks, newTask ];
+            this.storage.saveTasks( this.tasks );
+        }
+        
+        return this.tasks;
+    }
+
+
+    updateTask( taskIdToUpdate, newText ) 
+    {
+        this.tasks = this.tasks.map( task =>
             task.id === taskIdToUpdate
                 ? { ...task, text: newText }
                 : task
         );
+        this.storage.saveTasks( this.tasks );
+        return this.tasks;
     }
 
-    removeTask(tasks, taskIdToRemove) 
+    removeTask( taskIdToRemove ) 
     {
-        return tasks.filter(task => task.id !== taskIdToRemove);
+        this.tasks = this.storage.getTasks().filter( task => task.id !== taskIdToRemove );
+        this.storage.saveTasks( this.tasks );
+        return this.tasks;
     }
 
-    toggleTaskCompletion(tasks, taskIdToUpdate) 
+    toggleTaskCompletion( taskIdToUpdate ) 
     {
-        return tasks.map(task =>
+        this.tasks = this.storage.getTasks().map( task =>
             task.id === taskIdToUpdate
                 ? { ...task, completed: !task.completed }
                 : task
         );
-    };
+        this.storage.saveTasks( this.tasks );
+        return this.tasks;
+    }
+
+    getAllTasks()
+    {
+        return this.storage.getTasks();
+    }
 
 }
+
+module.exports = { TaskManager };
 

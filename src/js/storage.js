@@ -1,4 +1,4 @@
-export class Storage {
+class Storage {
 
     constructor() 
     {
@@ -7,12 +7,27 @@ export class Storage {
 
     getTasks() 
     {
-        return JSON.parse( localStorage.getItem( this.storageKey ) ) || [];
+        try 
+        {
+            const data = localStorage.getItem( this.storageKey );
+            return data ? JSON.parse( data ) : [];
+        } 
+        catch ( error ) 
+        {
+            console.error( "Error retrieving tasks:", error );
+            return [];
+        }
     }
 
     saveTasks( tasks ) 
     {
-        localStorage.setItem( this.storageKey, JSON.stringify( tasks ) );
+        try {
+            localStorage.setItem( this.storageKey, JSON.stringify( tasks ) );
+        } catch ( error ) 
+        {
+            console.error( "Error saving tasks:", error );
+        }
     }
-
 }
+
+module.exports = { Storage };

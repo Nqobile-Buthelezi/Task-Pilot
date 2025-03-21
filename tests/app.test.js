@@ -1,33 +1,60 @@
-const { addTask, removeTask, toggleTaskCompletion } = require( "../src/js/taskManager" );
+const { TaskManager } = require( "../src/js/taskManager.js" );
+const { Storage } = require( "../src/js/storage.js" );
 
-describe( "Task Management", () => 
+describe( "Task-Pilot: Task Management", () => 
 {
-    let tasks;
+    let task;
+    let storage;
+    let taskManager;
 
     beforeEach( () => 
     {
-        tasks = [ { id: 1, title: "Test Task", completed: false } ];
+        let storedTasks = JSON.stringify( [] );
+
+        const localStorageMock = {
+            getItem: jest.fn( () => storedTasks ),
+            setItem: jest.fn( ( key, value ) => 
+            {
+                storedTasks = value;
+            })
+        };
+
+        global.localStorage = localStorageMock;
+
+        storage = new Storage();
+        taskManager = new TaskManager( storage );
+
+        expect( taskManager.getAllTasks().length ).toBe( 0 );
+
+        task = { id: 1, title: "First test task", completed: false };
+        taskManager.addTask( task );
+    });
+
+    test( "Should initialise with an single task in the task list", () => 
+    {
+        expect( taskManager.getAllTasks().length ).toBe( 1 );
     });
 
     test( "Should add a new task.", () => 
     {
-        const newTask = { id: 2, title: "Second Test Task", completed: false };
+        const newTask = { id: 2, title: "Second test task", completed: false };
 
-        const updatedTasks = addTask( tasks, newTask );
+        const updatedTasks = taskManager.addTask( newTask );
 
         expect( updatedTasks.length ).toBe( 2 );
         expect( updatedTasks[ 1 ] ).toEqual( newTask );
+        expect( updatedTasks[ 1 ].title ).toBe( "Second test task" );
     });
 
     test( "Should be able to read the title.", () => 
     {
-        expect( tasks[ 0 ].title ).toBe( "Test Task" );
+        expect( taskManager.getAllTasks()[ 0 ].title ).toBe( "First test task" );
     });
 
     test( "Should toggle task completion status.", () => 
     {
         const taskIdToToggle = 1;
-        const updatedTasks = toggleTaskCompletion( tasks, taskIdToToggle );
+        const updatedTasks = taskManager.toggleTaskCompletion( taskIdToToggle );
         
         expect( updatedTasks.length ).toBe( 1 );
         expect( updatedTasks[ 0 ].completed ).toBe( true );
@@ -37,33 +64,35 @@ describe( "Task Management", () =>
     {
         const taskIdToRemove = 1;
 
-        const updatedTasks = removeTask( tasks, taskIdToRemove );
+        const updatedTasks = taskManager.removeTask( taskIdToRemove );
 
         expect( updatedTasks.length ).toBe( 0 );
     });
 
     test( "Should handle adding a task with an existing ID.", () => 
     {
-        const newTask = { id: 1, title: "Duplicate Task", completed: false };
+        const newTask = { id: 1, title: "Duplicate task", completed: false };
     
-        const updatedTasks = addTask( tasks, newTask );
+        const updatedTasks = taskManager.addTask( newTask );
         
         expect( updatedTasks.length ).toBe( 1 );
-        expect( updatedTasks[ 0 ].title ).toBe( "Test Task" );
+        expect( updatedTasks[ 0 ].title ).toBe( "First test task" );
     });
     
-    test( "Should return empty array when removing task from an empty list.", () => 
+    test( "Should return single task in the array when trying to remove task using non existent task id.", () => 
     {
-        const emptyTasks = [];
-        const updatedTasks = removeTask( emptyTasks, 1 );
+        const updatedTasks = taskManager.removeTask( 2 );
     
-        expect( updatedTasks.length ).toBe( 0 );
+        expect( updatedTasks.length ).toBe( 1 );
     });
     
-    test("Should toggle completed status for an already completed task.", () => 
+    test( "Should toggle completed status for an already completed task.", () => 
     {
-        tasks[ 0 ].completed = true;
-        const updatedTasks = toggleTaskCompletion( tasks, 1 );
+        let updatedTasks = taskManager.toggleTaskCompletion( 1 );
+
+        expect( updatedTasks[ 0 ].completed ).toBe( true );
+        
+        updatedTasks = taskManager.toggleTaskCompletion( 1 );
     
         expect( updatedTasks[ 0 ].completed ).toBe( false );
     });
