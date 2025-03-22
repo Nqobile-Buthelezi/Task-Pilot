@@ -4,6 +4,37 @@ export class UI {
     {
         this.taskList = document.getElementById( "taskList" );
         this.taskInput = document.getElementById( "taskInput" );
+
+        const savedTheme = localStorage.getItem( "theme" ) || "light";
+        this.setTheme( savedTheme );
+        
+        this.themeToggleButton = document.getElementById( "themeToggleButton" );
+        this.themeToggleButton.addEventListener( 
+            "click", () => 
+                this.toggleTheme() 
+        );
+    }
+
+    setTheme( theme ) 
+    {
+        if ( theme === "dark" ) 
+        {
+            document.body.classList.add( "dark-mode" );
+        } 
+        else 
+        {
+            document.body.classList.remove( "dark-mode" );
+        }
+
+        localStorage.setItem( "theme", theme );
+    }
+
+    toggleTheme() 
+    {
+        const currentTheme = document.body.classList.contains( "dark-mode" ) ? 
+        "dark" : "light";
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        this.setTheme( newTheme );
     }
 
     clearInput()

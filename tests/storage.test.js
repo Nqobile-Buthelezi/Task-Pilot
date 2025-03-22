@@ -1,6 +1,6 @@
 import { Storage } from "../src/js/storage";
 
-describe( "Task-Pilot: Storage", () => 
+describe( "Task Pilot: Storage", () => 
 {
 
     beforeEach( () => 
