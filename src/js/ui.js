@@ -17,6 +17,7 @@ export class UI {
 
         tasks.forEach( ( task, index ) => 
         {
+            console.log( task.completed );
             const li = document.createElement( "li" );
             li.className = "list-group-item d-flex " +
                 "justify-content-between align-items-center";

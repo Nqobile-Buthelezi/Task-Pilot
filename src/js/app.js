@@ -64,7 +64,7 @@ class App {
             {
                 if ( e.target.type === "checkbox" ) 
                 {
-                    const id = e.target.dataset.id;
+                    const id = Number( e.target.dataset.index );
                     this.handleToggleTask( id );
                 }
             }
@@ -74,10 +74,6 @@ class App {
     loadTasks()
     {
         this.tasks = this.taskManager.getAllTasks() || [];
-        for ( const task of this.tasks ) {
-            //print title of each task
-            console.log( task.title );
-        }
         this.ui.renderTasks( this.tasks );
     }
 
@@ -117,7 +113,6 @@ class App {
         
         if ( newText !== null && newText.trim() !== "" ) 
         {
-            console.log( newText );
             this.tasks = this.taskManager.updateTask( taskId, newText.trim() );
             
             this.loadTasks();
@@ -128,8 +123,9 @@ class App {
     handleToggleTask( taskId ) 
     {
         this.tasks = this.taskManager.toggleTaskCompletion( taskId );
-        this.storage.saveTasks( this.tasks );
+
         this.loadTasks();
+        this.ui.showAlert( "Task completion toggled successfully!" );
     }
 }
 
