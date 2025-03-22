@@ -69,6 +69,22 @@ class App {
                 }
             }
         );
+
+        this.taskList.addEventListener(
+            "dragend", 
+            () =>
+            {
+                const taskElements = [ ...this.taskList.querySelectorAll( "li" ) ];
+                const reorderdTasks = taskElements.map( element =>
+                {
+                    let taskId = Number( element.dataset.taskId );
+                    const chosenTask = this.taskManager.getTask( taskId );
+                    console.log( chosenTask.title );
+                    return chosenTask;
+                });
+
+                this.taskManager.updateTaskOrder( reorderdTasks );
+            });
     }
 
     loadTasks()
@@ -116,7 +132,6 @@ class App {
             this.tasks = this.taskManager.updateTask( taskId, newText.trim() );
             
             this.loadTasks();
-            this.ui.showAlert( "Task updated successfully!" );
         }
     }
 

@@ -79,6 +79,12 @@ export class TaskManager {
         return this.tasks;
     }
 
+    updateTaskOrder( tasks )
+    {
+        this.tasks = tasks;
+        this.storage.saveTasks( this.tasks );
+    }
+
     getAllTasks()
     {
         return this.storage.getTasks();

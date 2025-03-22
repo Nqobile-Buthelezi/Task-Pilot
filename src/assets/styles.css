@@ -63,6 +63,17 @@ body
     opacity: 1;
 }
 
+/* Drag and drop styling */
+.drag-handle {
+    cursor: move;
+    user-select: none;
+}
+
+.dragging {
+    opacity: 0.5;
+    border: 2px dashed #ccc;
+}
+
 /* Checkbox and text styling */
 .form-check-input:checked + span 
 {
