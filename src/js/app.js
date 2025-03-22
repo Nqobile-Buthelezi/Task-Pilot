@@ -93,10 +93,11 @@ class App {
         this.ui.renderTasks( this.tasks );
     }
 
-    handleClearTasks() {
+    handleClearTasks() 
+    {
         this.tasks = this.taskManager.clearTasks();
         this.loadTasks();
-        this.ui.showAlert("All tasks cleared!");
+        this.ui.showAlert( "All tasks cleared!" );
     }
 
     handleAddTask()
@@ -144,8 +145,10 @@ class App {
     }
 }
 
-document.addEventListener( "DOMContentLoaded", () => 
-    {
-        const app = new App();
-    }
-);
+function initialiseApp()
+{
+    const app = new App();
+    return app;
+}
+
+document.addEventListener( "DOMContentLoaded", initialiseApp );

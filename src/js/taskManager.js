@@ -13,11 +13,13 @@ export class TaskManager {
 
     createTask( title )
     {
-        return {
+        const newTask = {
             id: this.generateUniqueId(),
             title,
             completed: false
         };
+
+        return newTask;
     }
 
     generateUniqueId() {
@@ -30,6 +32,13 @@ export class TaskManager {
         }
 
         return newId;
+    }
+
+    createAndAddTask( title ) 
+    {
+        const newTask = this.createTask( title );
+        this.addTask( newTask );
+        return newTask;
     }
 
     addTask( newTask ) 

@@ -82,7 +82,7 @@ export class UI {
             {
                 const rect = task.getBoundingClientRect();
                 const middle = rect.top + rect.height / 2;
-                return e.clientY < middle
+                return e.clientY < middle;
             });
 
             if ( nextTask )
