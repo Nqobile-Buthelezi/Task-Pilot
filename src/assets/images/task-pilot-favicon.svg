@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Square background with rounded corners -->
+  <rect x="4" y="4" width="56" height="56" rx="8" ry="8" fill="#FF8C00" />
+  
+  <!-- Checkmark -->
+  <path d="M20 34L28 42L44 22" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  
+  <!-- Subtle airplane path/trail -->
+  <path d="M12 52C24 44 40 44 52 52" stroke="rgba(255,255,255,0.3)" stroke-width="3" stroke-linecap="round" fill="none" />
+</svg>

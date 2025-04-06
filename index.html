@@ -6,58 +6,160 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Pilot - Task Management App</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="src/assets/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="icon" href="src/assets/images/task-pilot-favicon.svg" type="image/svg+xml">
 </head>
 
 <body>
     <div class="container mt-5">
-
         <header class="text-center mb-4 d-flex justify-content-center align-items-center gap-2">
-            <h1 class="display-4 mb-0">Task Pilot</h1>
+            <div class="d-flex align-items-center">
+                <img src="src/assets/images/task-pilot-favicon.svg" height="40" width="40" class="me-2" alt="Task Pilot Logo">
+                <h1 class="display-4 mb-0">Task Pilot</h1>
+            </div>
             <button id="themeToggleButton" class="btn btn-outline-secondary btn-sm ms-3">
-                <i class="bi bi-moon-fill"></i>
-                <span class="d-none d-sm-inline">Toggle Dark Mode</span>
+                <i class="bi bi-moon-fill me-1"></i>
+                <span class="d-none d-sm-inline">Toggle Theme</span>
             </button>
         </header>
 
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="input-group mb-4">
-                    <input type="text" class="form-control" id="taskInput" placeholder="Enter your task...">
-                    <button class="btn btn-primary" id="addTask">Add Task</button>
-                    <button class="btn btn-danger" id="clearTasks">Clear All</button>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="taskInput" placeholder="Enter your task...">
+                            <button class="btn btn-primary" id="addTask">
+                                <i class="bi bi-plus-lg me-1"></i>Add
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h2 class="h5 mb-0">My Tasks</h2>
-                        <button id="toggleButton" class="btn btn-primary mb-3" data-bs-toggle="button" aria-pressed="false" autocomplete="off">
-                            <i class="bi bi-list me-2"></i>Toggle Task List
-                        </button>
+                        <h2 class="h5 mb-0">
+                            <i class="bi bi-list-check me-2" style="color: var(--accent-primary);"></i>
+                            My Tasks
+                        </h2>
+                        <div>
+                            <button id="clearTasks" class="btn btn-danger btn-sm me-2">
+                                <i class="bi bi-trash me-1"></i>
+                                <span class="d-none d-sm-inline">Clear All</span>
+                            </button>
+                            <button id="toggleButton" class="btn btn-secondary btn-sm" data-bs-toggle="button" aria-pressed="false" autocomplete="off">
+                                <i class="bi bi-eye me-1"></i>
+                                <span class="d-none d-sm-inline">Toggle View</span>
+                            </button>
+                        </div>
                     </div>
                     <div class="card-body">
                         <ul class="list-group" id="taskList">
+                            <!-- Tasks will be populated here -->
                         </ul>
+                        <div id="emptyState" class="text-center py-4 d-none">
+                            <i class="bi bi-clipboard-check fs-1" style="color: var(--accent-primary);"></i>
+                            <p class="mt-2">No tasks yet. Add one to get started!</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="src/js/app.js"></script>
     <script>
-        $(document).ready(function () 
-        {
-            $("#toggleButton").click(function () 
-            {
+        $(document).ready(function() {
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('taskPilotTheme');
+            if (savedTheme === 'dark') {
+                $('body').addClass('dark-mode');
+                $('#themeToggleButton').html('<i class="bi bi-sun-fill me-1"></i><span class="d-none d-sm-inline">Light Mode</span>');
+            }
+            
+            // Toggle task list visibility
+            $("#toggleButton").click(function() {
                 $("#taskList").slideToggle();
+            });
+            
+            // Theme toggle functionality
+            $("#themeToggleButton").click(function() {
+                $('body').toggleClass('dark-mode');
+                
+                if ($('body').hasClass('dark-mode')) {
+                    $(this).html('<i class="bi bi-sun-fill me-1"></i><span class="d-none d-sm-inline">Light Mode</span>');
+                    localStorage.setItem('taskPilotTheme', 'dark');
+                } else {
+                    $(this).html('<i class="bi bi-moon-fill me-1"></i><span class="d-none d-sm-inline">Dark Mode</span>');
+                    localStorage.setItem('taskPilotTheme', 'light');
+                }
+            });
+            
+            // Check for empty task list
+            function checkEmptyState() {
+                if ($('#taskList').children().length === 0) {
+                    $('#emptyState').removeClass('d-none');
+                } else {
+                    $('#emptyState').addClass('d-none');
+                }
+            }
+            
+            // Run on page load
+            checkEmptyState();
+            
+            // Mock adding a task for demonstration
+            $('#addTask').click(function() {
+                const taskText = $('#taskInput').val().trim();
+                if (taskText) {
+                    const newTask = `
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="task-${Date.now()}">
+                                <span>${taskText}</span>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-sm edit-btn">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="btn btn-sm delete-btn">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </li>
+                    `;
+                    $('#taskList').append(newTask);
+                    $('#taskInput').val('');
+                    checkEmptyState();
+                }
+            });
+            
+            // Task input on enter key
+            $('#taskInput').keypress(function(e) {
+                if (e.which === 13) {
+                    $('#addTask').click();
+                }
+            });
+            
+            // Clear all tasks
+            $('#clearTasks').click(function() {
+                $('#taskList').empty();
+                checkEmptyState();
+            });
+            
+            // Event delegation for task actions
+            $('#taskList').on('click', '.delete-btn', function() {
+                $(this).closest('li').remove();
+                checkEmptyState();
+            });
+            
+            $('#taskList').on('change', '.form-check-input', function() {
+                $(this).next('span').toggleClass('text-decoration-line-through text-secondary');
             });
         });
     </script>
-
 </body>
 
 </html>
