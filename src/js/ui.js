@@ -37,6 +37,18 @@ export class UI {
         this.setTheme( newTheme );
     }
 
+    checkEmptyState() 
+    {
+        if ( $( "#taskList" ).children().length === 0 ) 
+        {
+            $( "#emptyState" ).removeClass( "d-none" );
+        } 
+        else 
+        {
+            $( "#emptyState" ).addClass( "d-none" );
+        }
+    }
+
     clearInput()
     {
         this.taskInput.value = "";
