@@ -13,6 +13,9 @@ export class UI {
             "click", () => 
                 this.toggleTheme() 
         );
+
+        this.toggleViewButton = document.getElementById( "toggleButton" );
+        this.setUpToggleView();
     }
 
     setTheme( theme ) 
@@ -35,6 +38,38 @@ export class UI {
         "dark" : "light";
         const newTheme = currentTheme === "dark" ? "light" : "dark";
         this.setTheme( newTheme );
+    }
+
+    setUpToggleView()
+    {
+        this.toggleViewButton.addEventListener( "click", () =>
+        {
+            this.toggleView();
+        })
+    }
+
+    toggleView()
+    {
+        const taskList = $( "#taskList" );
+        const emptyState = $( "#emptyState" );
+        const icon = $( this.toggleViewButton ).find( "i" );
+
+        if ( taskList.is( ":visible" ) ) 
+        {
+            taskList.slideUp( 300, function() 
+            {
+                emptyState.slideDown( 300 );
+                icon.removeClass( "bi-eye-slash" ).addClass( "bi-eye" );
+            });
+        }
+        else
+        {
+            emptyState.slideUp( 300, function()
+            {
+                taskList.slideDown( 300 );
+                icon.removeClass( "bi-eye" ).addClass( "bi-eye-slash" );
+            });
+        }
     }
 
     checkEmptyState() 

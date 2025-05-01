@@ -16,6 +16,7 @@ class App {
         this.clearTasksBtn = document.getElementById( "clearTasks" );
         this.taskInput = document.getElementById( "taskInput" );
         this.taskList = document.getElementById( "taskList" );
+        this.toggleButton = document.getElementById( "toggleButton" );
 
         this.initialiseEventListeners();
         this.loadTasks();
@@ -79,7 +80,6 @@ class App {
                 {
                     let taskId = Number( element.dataset.taskId );
                     const chosenTask = this.taskManager.getTask( taskId );
-                    console.log( chosenTask.title );
                     return chosenTask;
                 });
 
