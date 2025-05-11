@@ -5,5 +5,5 @@ Feature: Task Management
 
     Scenario: Load the Task Pilot application
         Given I am on the Task Pilot homepage.
-        Then I should see the title "Task Pilot".
+        Then I should see the title "Task Pilot - Task Management App".
         

@@ -1,0 +1,50 @@
+[
+  {
+    "description": "    As a user of Task Pilot\n    I want to create and manage tasks\n    So that I can keep track of my work",
+    "elements": [
+      {
+        "description": "",
+        "id": "task-management;load-the-task-pilot-application",
+        "keyword": "Scenario",
+        "line": 6,
+        "name": "Load the Task Pilot application",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the Task Pilot homepage.",
+            "match": {
+              "location": "tests/automation/step_definitions/tasks_steps.cjs:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3960657952
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "I should see the title \"Task Pilot - Task Management App\".",
+            "match": {
+              "location": "tests/automation/step_definitions/tasks_steps.cjs:15"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 116916806
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "task-management",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Task Management",
+    "tags": [],
+    "uri": "tests/automation/features/tasks.feature"
+  }
+]

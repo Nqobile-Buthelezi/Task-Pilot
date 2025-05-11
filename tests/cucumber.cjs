@@ -1,11 +1,11 @@
 module.exports = {
     default: {
         require: [
-            "tests/automation/step_definitions/*.cjs",
-            "tests/automation/support/*.js"
+            "tests/automation/step_definitions/**/*.cjs",
+            "tests/automation/support/**/*.cjs"
         ],
         paths: [
-            "tests/automation/features/*.feature"
+            "tests/automation/features/**/*.feature"
         ],
         format: [
             "progress", 
