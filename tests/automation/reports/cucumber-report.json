@@ -1,38 +1,226 @@
 [
   {
-    "description": "    As a user of Task Pilot\n    I want to create and manage tasks\n    So that I can keep track of my work",
+    "description": "",
     "elements": [
       {
         "description": "",
-        "id": "task-management;load-the-task-pilot-application",
+        "id": "landing-page-ui;i-see-the-application-title",
         "keyword": "Scenario",
-        "line": 6,
-        "name": "Load the Task Pilot application",
+        "line": 3,
+        "name": "I see the application title",
         "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 673455887
+            }
+          },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 7,
-            "name": "I am on the Task Pilot homepage.",
+            "line": 4,
+            "name": "I am on the Task Pilot homepage",
             "match": {
               "location": "tests/automation/step_definitions/tasks_steps.cjs:6"
             },
             "result": {
               "status": "passed",
-              "duration": 3960657952
+              "duration": 1285089236
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 8,
-            "name": "I should see the title \"Task Pilot - Task Management App\".",
+            "line": 5,
+            "name": "I should see the title \"Task Pilot - Task Management App\"",
             "match": {
-              "location": "tests/automation/step_definitions/tasks_steps.cjs:15"
+              "location": "tests/automation/step_definitions/tasks_steps.cjs:14"
             },
             "result": {
               "status": "passed",
-              "duration": 116916806
+              "duration": 19303229
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 72128689
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "landing-page-ui;i-see-the-main-heading",
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "I see the main heading",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 680099614
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I am on the Task Pilot homepage",
+            "match": {
+              "location": "tests/automation/step_definitions/tasks_steps.cjs:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 512224828
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "the page should display a heading \"Task Pilot\"",
+            "match": {
+              "location": "tests/automation/step_definitions/tasks_steps.cjs:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 86552658
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 56797572
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "landing-page-ui;i-see-the-task-input-form",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "I see the task input form",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 811477109
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am on the Task Pilot homepage",
+            "match": {
+              "location": "tests/automation/step_definitions/tasks_steps.cjs:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 529752468
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "I should see an input field with placeholder \"Enter your task...\"",
+            "match": {
+              "location": "tests/automation/step_definitions/tasks_steps.cjs:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 77052683
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I should see an \"Add\" button",
+            "match": {
+              "location": "tests/automation/step_definitions/tasks_steps.cjs:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 74682500
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 52925432
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "landing-page-ui;i-see-the-theme-toggle-control",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "I see the theme toggle control",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 673552040
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 17,
+            "name": "I am on the Task Pilot homepage",
+            "match": {
+              "location": "tests/automation/step_definitions/tasks_steps.cjs:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 464347636
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "I should see a button labeled \"Toggle Theme\"",
+            "match": {
+              "location": "tests/automation/step_definitions/tasks_steps.cjs:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 97602339
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 54217280
             }
           }
         ],
@@ -40,11 +228,11 @@
         "type": "scenario"
       }
     ],
-    "id": "task-management",
+    "id": "landing-page-ui",
     "line": 1,
     "keyword": "Feature",
-    "name": "Task Management",
+    "name": "Landing page UI",
     "tags": [],
-    "uri": "tests/automation/features/tasks.feature"
+    "uri": "tests/automation/features/landing_page.feature"
   }
 ]
