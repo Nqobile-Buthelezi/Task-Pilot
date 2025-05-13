@@ -1,7 +1,8 @@
-const { BeforeAll, Before, After, AfterAll } = require("@cucumber/cucumber");
+const { setDefaultTimeout, BeforeAll, Before, After, AfterAll } = require("@cucumber/cucumber");
 const { spawn } = require("child_process");
 
 let serverProcess;
+setDefaultTimeout(60 * 1000); // 60 seconds to allows for server startup
 
 BeforeAll( async function () 
   {
