@@ -6,7 +6,7 @@
         "description": "",
         "id": "landing-page-ui;i-see-the-application-title",
         "keyword": "Scenario",
-        "line": 3,
+        "line": 6,
         "name": "I see the application title",
         "steps": [
           {
@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 673455887
+              "duration": 675984430
             }
           },
           {
@@ -23,24 +23,24 @@
             "line": 4,
             "name": "I am on the Task Pilot homepage",
             "match": {
-              "location": "tests/automation/step_definitions/tasks_steps.cjs:6"
+              "location": "tests/automation/step_definitions/common_steps.cjs:4"
             },
             "result": {
               "status": "passed",
-              "duration": 1285089236
+              "duration": 5838526877
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 5,
+            "line": 7,
             "name": "I should see the title \"Task Pilot - Task Management App\"",
             "match": {
-              "location": "tests/automation/step_definitions/tasks_steps.cjs:14"
+              "location": "tests/automation/step_definitions/landing_page_steps.cjs:6"
             },
             "result": {
               "status": "passed",
-              "duration": 19303229
+              "duration": 16326992
             }
           },
           {
@@ -48,7 +48,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 72128689
+              "duration": 64582236
             }
           }
         ],
@@ -59,7 +59,7 @@
         "description": "",
         "id": "landing-page-ui;i-see-the-main-heading",
         "keyword": "Scenario",
-        "line": 7,
+        "line": 9,
         "name": "I see the main heading",
         "steps": [
           {
@@ -67,33 +67,33 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 680099614
+              "duration": 729756894
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 8,
+            "line": 4,
             "name": "I am on the Task Pilot homepage",
             "match": {
-              "location": "tests/automation/step_definitions/tasks_steps.cjs:6"
+              "location": "tests/automation/step_definitions/common_steps.cjs:4"
             },
             "result": {
               "status": "passed",
-              "duration": 512224828
+              "duration": 541251561
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 9,
+            "line": 10,
             "name": "the page should display a heading \"Task Pilot\"",
             "match": {
-              "location": "tests/automation/step_definitions/tasks_steps.cjs:22"
+              "location": "tests/automation/step_definitions/landing_page_steps.cjs:14"
             },
             "result": {
               "status": "passed",
-              "duration": 86552658
+              "duration": 125933256
             }
           },
           {
@@ -101,7 +101,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 56797572
+              "duration": 62540505
             }
           }
         ],
@@ -112,7 +112,7 @@
         "description": "",
         "id": "landing-page-ui;i-see-the-task-input-form",
         "keyword": "Scenario",
-        "line": 11,
+        "line": 12,
         "name": "I see the task input form",
         "steps": [
           {
@@ -120,20 +120,20 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 811477109
+              "duration": 675223791
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 12,
+            "line": 4,
             "name": "I am on the Task Pilot homepage",
             "match": {
-              "location": "tests/automation/step_definitions/tasks_steps.cjs:6"
+              "location": "tests/automation/step_definitions/common_steps.cjs:4"
             },
             "result": {
               "status": "passed",
-              "duration": 529752468
+              "duration": 464094384
             }
           },
           {
@@ -142,11 +142,11 @@
             "line": 13,
             "name": "I should see an input field with placeholder \"Enter your task...\"",
             "match": {
-              "location": "tests/automation/step_definitions/tasks_steps.cjs:31"
+              "location": "tests/automation/step_definitions/landing_page_steps.cjs:23"
             },
             "result": {
               "status": "passed",
-              "duration": 77052683
+              "duration": 68973048
             }
           },
           {
@@ -155,11 +155,11 @@
             "line": 14,
             "name": "I should see an \"Add\" button",
             "match": {
-              "location": "tests/automation/step_definitions/tasks_steps.cjs:49"
+              "location": "tests/automation/step_definitions/landing_page_steps.cjs:41"
             },
             "result": {
               "status": "passed",
-              "duration": 74682500
+              "duration": 76024036
             }
           },
           {
@@ -167,7 +167,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 52925432
+              "duration": 54004621
             }
           }
         ],
@@ -186,33 +186,33 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 673552040
+              "duration": 652339967
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 17,
+            "line": 4,
             "name": "I am on the Task Pilot homepage",
             "match": {
-              "location": "tests/automation/step_definitions/tasks_steps.cjs:6"
+              "location": "tests/automation/step_definitions/common_steps.cjs:4"
             },
             "result": {
               "status": "passed",
-              "duration": 464347636
+              "duration": 509733819
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 18,
+            "line": 17,
             "name": "I should see a button labeled \"Toggle Theme\"",
             "match": {
-              "location": "tests/automation/step_definitions/tasks_steps.cjs:40"
+              "location": "tests/automation/step_definitions/landing_page_steps.cjs:32"
             },
             "result": {
               "status": "passed",
-              "duration": 97602339
+              "duration": 103101347
             }
           },
           {
@@ -220,7 +220,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 54217280
+              "duration": 53852426
             }
           }
         ],
@@ -234,5 +234,161 @@
     "name": "Landing page UI",
     "tags": [],
     "uri": "tests/automation/features/landing_page.feature"
+  },
+  {
+    "description": "  As a user\n  I want to toggle between light and dark themes\n  So that I can personalise my experience based on my preference",
+    "elements": [
+      {
+        "description": "",
+        "id": "theme-toggling;switching-from-light-to-dark-theme",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "Switching from light to dark theme",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 721988832
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the Task Pilot homepage",
+            "match": {
+              "location": "tests/automation/step_definitions/common_steps.cjs:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 447477884
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "I click the theme toggle button",
+            "match": {
+              "location": "tests/automation/step_definitions/theme_toggle_steps.cjs:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 360455625
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "the application should switch to dark mode",
+            "match": {
+              "location": "tests/automation/step_definitions/theme_toggle_steps.cjs:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 54650069
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 55244102
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "theme-toggling;switching-from-dark-to-light-theme",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "Switching from dark to light theme",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 693336733
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the Task Pilot homepage",
+            "match": {
+              "location": "tests/automation/step_definitions/common_steps.cjs:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 463760645
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "the application is in dark mode",
+            "match": {
+              "location": "tests/automation/step_definitions/theme_toggle_steps.cjs:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 337454280
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "I click the theme toggle button",
+            "match": {
+              "location": "tests/automation/step_definitions/theme_toggle_steps.cjs:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 158031274
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "the application should switch to light mode",
+            "match": {
+              "location": "tests/automation/step_definitions/theme_toggle_steps.cjs:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 34349143
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 55580126
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "theme-toggling",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Theme toggling",
+    "tags": [],
+    "uri": "tests/automation/features/theme_toggle.feature"
   }
 ]
