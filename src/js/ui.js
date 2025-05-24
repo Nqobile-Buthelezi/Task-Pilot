@@ -179,15 +179,4 @@ export class UI {
         });
     }
 
-    showAlert( message, type = "success" ) 
-    {
-        const alert = document.createElement( "div" );
-        alert.className = `alert alert-${ type } mt-3`;
-        alert.textContent = message;
-        
-        const container = document.querySelector( ".container" );
-        container.insertBefore( alert, container.firstChild );
-
-        setTimeout( () => alert.remove(), 3000 );
-    }
 }

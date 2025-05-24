@@ -97,7 +97,6 @@ class App {
     {
         this.tasks = this.taskManager.clearTasks();
         this.loadTasks();
-        this.ui.showAlert( "All tasks cleared!" );
     }
 
     handleAddTask()
@@ -110,7 +109,6 @@ class App {
             this.tasks = this.taskManager.addTask( task );
             this.ui.clearInput();
             this.loadTasks();
-            this.ui.showAlert( "Task added successfully!" );
         }
     }
 
@@ -120,7 +118,6 @@ class App {
         this.tasks = this.taskManager.removeTask( taskId );
 
         this.loadTasks();
-        this.ui.showAlert( "Task deleted successfully!" );
     }
 
     handleEditTask( taskId ) 
@@ -141,7 +138,6 @@ class App {
         this.tasks = this.taskManager.toggleTaskCompletion( taskId );
 
         this.loadTasks();
-        this.ui.showAlert( "Task completion toggled successfully!" );
     }
 }
 
