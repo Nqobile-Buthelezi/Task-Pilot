@@ -14,6 +14,7 @@ try
 catch ( error ) 
 {
   console.error( "Unit test/s have failed." );
+  console.error( error instanceof Error ? error.stack : error );
   process.exit( 1 );
 }
 
@@ -33,6 +34,7 @@ try
 catch ( error ) 
 {
   console.error( "End to end test/s have failed." );
+  console.error( error instanceof Error ? error.stack : error );
   process.exit( 1 );
 }
 
