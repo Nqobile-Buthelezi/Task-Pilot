@@ -7,7 +7,7 @@ setDefaultTimeout(60 * 1000); // 60 seconds to allows for server startup
 BeforeAll( async function () 
   {
     console.log( "Starting the server for all scenarios." );
-    serverProcess = spawn( "npx", [ "serve", "." ], 
+    serverProcess = spawn( "npm", [ "run", "start" ], 
       {
         stdio: "inherit",
         detached: true
@@ -37,7 +37,7 @@ After( async function()
 
 AfterAll( function () 
   {
-    if ( serverProcess && serverProcess.pid ) 
+    if ( serverProcess?.pid ) // Check if serverProcess is defined/exists and has a pid
     {
       console.log( "Shutting down the server..." );
       process.kill( -serverProcess.pid, "SIGKILL" );
